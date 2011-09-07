@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# jggtrans:		Jabber GaduGadu transport
+#
+# chkconfig:	345 85 05
+# description:	Jabber GaduGadu transport
+
+
+# Source function library.
+#PATH=$PATH:/usr/local/bin
+. /etc/rc.d/init.d/functions
+
+[ -f /etc/sysconfig/jjigw ] && . /etc/sysconfig/jjigw
+
+#startjjigw() 
+#{
+#nohup /usr/local/bin/jjigw 2>&1 >>/var/log/ejabberd/jjigw.log &
+#}
+
+start() 
+{
+###	[ -z "$JJIGW_FLAGS" ] && exit 0
+
+	echo -n $"Starting Jabber IRC transport: "
+	daemon startjjigw -u ejabberd $JGGTRANS_FLAGS 
+
+	touch /var/lock/subsys/jjigw
+	echo_success
+        echo
+}
+
+stop() 
+{
+	echo -n $"Stoping Jabber IRC transport: "
+	killproc jjigw
+
+	rm -f  /var/lock/subsys/jjigw
+        echo
+}
+
+[ -f /usr/bin/startjjigw ] || exit 0
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+        ;;
+  stop)
+	stop
+        ;;
+  restart|reload)
+	stop
+	start
+	;;
+  condrestart)
+	[ -e /var/lock/subsys/jjigw ] && (stop; start)
+	;;
+  status)
+  	status jjigw
+	;;
+  *)
+        echo $"Usage: $0 {start|stop|restart|reload|condrestart}"
+        exit 1
+esac
+
+exit 0
