@@ -38,6 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 install -D jjigw.xml.example $RPM_BUILD_ROOT%{_sysconfdir}/jabber/jjigw.xml
 install  -D jjigw.init $RPM_BUILD_ROOT/etc/rc.d/init.d/jjigw
 install  -D jjigw.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/jjigw
+install  -D startjjigw $RPM_BUILD_ROOT/usr/bin
 (cd  $RPM_BUILD_ROOT/usr/bin ; rm -f jjigw; ln -s /usr/share/jjigw/jjigw.py jjigw )
 sed -i 'sA/usr/etcA/etc/jabberA'   $RPM_BUILD_ROOT/usr/share/jjigw/jjigw.py
 
@@ -52,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 /etc/jabber/jjigw.xml
 %attr(755,root,root) /etc/rc.d/init.d/jjigw
 /etc/sysconfig/jjigw
+/usr/bin/startjjigw
 %attr(755,root,root) /usr/share/jjigw/*
 
 %define date	%(echo `LC_ALL="C" date +"%a %b %d %Y"`)

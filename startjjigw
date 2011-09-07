@@ -1,0 +1,4 @@
+#! /bin/sh
+#nohup /usr/bin/jjigw 2>&1 >>/var/log/ejabberd/jjigw.log &
+#nohup /usr/share/jjigw/jjigw.py 2>&1 >>/var/log/ejabberd/jjigw.log &
+nohup jjigw 2>&1 >>/var/log/ejabberd/jjigw.log &
