@@ -50,10 +50,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO ChangeLog
 %attr(755,root,root) %{_bindir}/*
 %doc /usr/share/doc/jjigw/*
-/etc/jabber/jjigw.xml
+%attr(0600,root,root) %config(noreplace) /etc/jabber/jjigw.xml
 %attr(755,root,root) /etc/rc.d/init.d/jjigw
 /etc/sysconfig/jjigw
-/usr/bin/startjjigw
 %attr(755,root,root) /usr/share/jjigw/*
 
 %define date	%(echo `LC_ALL="C" date +"%a %b %d %Y"`)
