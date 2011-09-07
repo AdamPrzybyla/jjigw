@@ -4,7 +4,7 @@ Summary:	IRC transport module for Jabber
 Summary(pl):	Moduł transportowy IRC dla systemu Jabber
 Name:		jjigw
 Version:	VERSION_STR
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Applications/Communications
