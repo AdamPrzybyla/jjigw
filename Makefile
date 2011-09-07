@@ -25,16 +25,18 @@ SNAPSHOT=
 PY_DIRS=jjigw
 DOCS=ChangeLog INSTALL README TODO jjigw.xml.example
 
-EXTRA_DIST=jjigw.py jjigw.dtd spidentd.py catalog.xml
+EXTRA_DIST=jjigw.py jjigw.dtd spidentd.py catalog.xml jjigw.init jjigw.sysconfig jjigw.spec
 
 .PHONY: all version dist ChangeLog cosmetics
 
-all: version jjigw.py.inst catalog.xml.inst
+all: version jjigw.py.inst catalog.xml.inst ChangeLog
 
 version:
 	if test -d ".git" ; then \
 		echo "version='$(VERSION)+git'" > jjigw/version.py ; \
 	fi
+	sed -i "s/VERSION_STR/$(VERSION)/g" jjigw.spec
+	git-log |grep -v ^commit|sed 's/ *-/-/g'|sed 's/^  */- /g'| awk '/Author/ {a=$$0;gsub("Author:","",a);next} /Date/ {d=$$2" "$$3" "$$4" "$$6; print "\n* "d,a;next} /^-/ {print} '|sed 1d >>jjigw.spec
 
 jjigw.py.inst: jjigw.py
 	$(SED) -e \
