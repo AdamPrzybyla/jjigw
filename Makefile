@@ -25,7 +25,7 @@ SNAPSHOT=
 PY_DIRS=jjigw
 DOCS=ChangeLog INSTALL README TODO jjigw.xml.example
 
-EXTRA_DIST=jjigw.py jjigw.dtd spidentd.py catalog.xml jjigw.init jjigw.sysconfig jjigw.spec
+EXTRA_DIST=jjigw.py jjigw.dtd spidentd.py catalog.xml jjigw.init jjigw.sysconfig jjigw.spec startjjigw
 
 .PHONY: all version dist ChangeLog cosmetics
 
