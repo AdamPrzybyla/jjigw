@@ -1,21 +1,15 @@
 #!/bin/sh
 #
-# jggtrans:		Jabber GaduGadu transport
+# jjigw		Jabber IRC transport
 #
 # chkconfig:	345 85 05
-# description:	Jabber GaduGadu transport
+# description:	Jabber IRC transport
 
 
 # Source function library.
-#PATH=$PATH:/usr/local/bin
 . /etc/rc.d/init.d/functions
 
 [ -f /etc/sysconfig/jjigw ] && . /etc/sysconfig/jjigw
-
-#startjjigw() 
-#{
-#nohup /usr/local/bin/jjigw 2>&1 >>/var/log/ejabberd/jjigw.log &
-#}
 
 start() 
 {
